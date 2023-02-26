@@ -121,8 +121,10 @@ echo "$REMOTEDESKTOP"
 if [ $REMOTEDESKTOP == "True" ] ; then
     echo "Installing remote desktop software"
     sudo apt install -y ubuntu-gnome-desktop
+    echo "Installed gnome desktop"
     sudo systemctl set-default multi-user.target
     sudo apt install -y tigervnc-standalone-server
+    echo "Installed vnc server"
 fi
 
 install_xrt
