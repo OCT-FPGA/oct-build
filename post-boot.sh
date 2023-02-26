@@ -134,6 +134,5 @@ else
     exit 1
 fi
 
-if 
 echo "Done running startup script."
 exit 0
