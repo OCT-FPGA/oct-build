@@ -27,6 +27,10 @@ pc.defineParameter("toolVersion", "Tool Version",
                    toolVersion[0], toolVersion,
                    longDescription="Select a tool version. It is recommended to use the latest version for the deployment workflow. For more information, visit https://www.xilinx.com/products/boards-and-kits/alveo/u280.html#gettingStarted")   
 
+pc.defineParameter("enableRemoteDesktop", "Remote Desktop Access",
+                   portal.ParameterType.BOOLEAN, False,
+                   advanced=False,
+                   longDescription="Enable remote desktop access by installing Gnome desktop and VNC server.")
 
 params = pc.bindParameters() 
  
@@ -45,7 +49,7 @@ node.ram = 65536
 node.disk = 100
 
 if params.toolVersion != "Do not install tools":
-  node.addService(pg.Execute(shell="bash", command="sudo /local/repository/post-boot.sh " + params.toolVersion + " >> /local/repository/output_log.txt"))
+  node.addService(pg.Execute(shell="bash", command="sudo /local/repository/post-boot.sh " + params.toolVersion + params.enableRemoteDesktop + " >> /local/repository/output_log.txt"))
 pass 
    
 
