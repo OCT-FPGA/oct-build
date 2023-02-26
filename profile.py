@@ -14,12 +14,12 @@ import geni.rspec.pg as pg
 pc = portal.Context()
 request = pc.makeRequestRSpec()
     
-toolVersion = [#('2022.1'),
-               ('2021.1'), 
-               ('2020.2.1'), 
-               ('2020.2'), 
-               ('2020.1.1'),
-               ('2020.1'),
+toolVersion = [('2022.1'),
+               #('2021.1'), 
+               #('2020.2.1'), 
+               #('2020.2'), 
+               #('2020.1.1'),
+               #('2020.1'),
                ('Do not install tools')] 
     
 pc.defineParameter("toolVersion", "Tool Version",
