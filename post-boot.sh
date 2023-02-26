@@ -117,7 +117,7 @@ PACKAGE_VERSION=`grep ^$COMB: $SCRIPT_PATH/spec.txt | awk -F':' '{print $2}' | a
 XRT_VERSION=`grep ^$COMB: $SCRIPT_PATH/spec.txt | awk -F':' '{print $2}' | awk -F';' '{print $7}' | awk -F= '{print $2}'`
 U280=1
 
-if [ $REMOTEDESKTOP == "1" ] ; then
+if [ $REMOTEDESKTOP == 1 ] ; then
     sudo apt install ubuntu-gnome-desktop
     sudo systemctl set-default multi-user.target
     sudo apt install tigervnc-standalone-server
