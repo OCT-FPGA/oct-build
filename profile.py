@@ -35,7 +35,7 @@ node = request.XenVM("build-vm")
 node.xen_ptype = "build-vm"
 
 # Request a specific number of VCPUs.
-node.cores = 8
+node.cores = 4
 
 # Request a specific amount of memory (in MB).
 node.ram = 65536
