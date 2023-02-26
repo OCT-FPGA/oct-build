@@ -13,8 +13,6 @@ import geni.rspec.pg as pg
 # Create a Request object to start building the RSpec.
 pc = portal.Context()
 request = pc.makeRequestRSpec()
-
-# Pick your image.
     
 toolVersion = [#('2022.1'),
                ('2021.1'), 
