@@ -15,14 +15,7 @@ pc = portal.Context()
 request = pc.makeRequestRSpec()
 
 # Pick your image.
-imageList = [
-    #('urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU20-64-STD', 'UBUNTU 20.04'),    
-    ('urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU18-64-STD', 'UBUNTU 18.04'), 
-    ('urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU16-64-STD', 'UBUNTU 16.04'),
-    #('urn:publicid:IDN+emulab.net+image+emulab-ops//CENTOS8-64-STD', 'CENTOS 8.4'),
-    ('urn:publicid:IDN+emulab.net+image+emulab-ops//CENTOS7-64-STD', 'CENTOS 7.9')] 
     
-
 toolVersion = [#('2022.1'),
                ('2021.1'), 
                ('2020.2.1'), 
@@ -35,10 +28,7 @@ pc.defineParameter("toolVersion", "Tool Version",
                    portal.ParameterType.STRING,
                    toolVersion[0], toolVersion,
                    longDescription="Select a tool version. It is recommended to use the latest version for the deployment workflow. For more information, visit https://www.xilinx.com/products/boards-and-kits/alveo/u280.html#gettingStarted")   
-pc.defineParameter("osImage", "Select Image",
-                   portal.ParameterType.IMAGE,
-                   imageList[0], imageList,
-                   longDescription="Supported operating systems are Ubuntu and CentOS.")  
+
 
 params = pc.bindParameters() 
  
