@@ -105,7 +105,8 @@ OSVERSION=`echo $OSVERSION | tr -d '"'`
 VERSION_ID=`grep '^VERSION_ID=' /etc/os-release | awk -F= '{print $2}'`
 VERSION_ID=`echo $VERSION_ID | tr -d '"'`
 OSVERSION="$OSVERSION-$VERSION_ID"
-TOOLVERSION=$1
+REMOTEDESKTOP=$1
+TOOLVERSION=$2
 SCRIPT_PATH=/local/repository
 COMB="${TOOLVERSION}_${OSVERSION}"
 XRT_PACKAGE=`grep ^$COMB: $SCRIPT_PATH/spec.txt | awk -F':' '{print $2}' | awk -F';' '{print $1}' | awk -F= '{print $2}'`
@@ -115,6 +116,12 @@ PACKAGE_NAME=`grep ^$COMB: $SCRIPT_PATH/spec.txt | awk -F':' '{print $2}' | awk 
 PACKAGE_VERSION=`grep ^$COMB: $SCRIPT_PATH/spec.txt | awk -F':' '{print $2}' | awk -F';' '{print $6}' | awk -F= '{print $2}'`
 XRT_VERSION=`grep ^$COMB: $SCRIPT_PATH/spec.txt | awk -F':' '{print $2}' | awk -F';' '{print $7}' | awk -F= '{print $2}'`
 U280=1
+
+if [$REMOTEDESKTOP==1] ; then
+    sudo apt install ubuntu-gnome-desktop
+    sudo systemctl set-default multi-user.target
+    sudo apt install tigervnc-standalone-server
+fi
 
 install_xrt
 install_shellpkg
@@ -126,5 +133,7 @@ else
     echo "XRT and/or shell package installation failed."
     exit 1
 fi
+
+if 
 echo "Done running startup script."
 exit 0
