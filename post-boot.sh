@@ -37,7 +37,6 @@ install_xrt() {
 install_shellpkg() {
 if [[ "$SHELL" == 1 ]]; then     
     install_u280_shell  
-    done
 fi
 }
 
