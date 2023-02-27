@@ -32,15 +32,15 @@ pc.defineParameter("enableRemoteDesktop", "Remote Desktop Access",
                    advanced=False,
                    longDescription="Enable remote desktop access by installing Gnome desktop and VNC server.")
 
-pc.defineParameter("nodeName",  "Name of the virtual machine",
-                   portal.ParameterType.STRING, "",
-                   longDescription="Specify a name for the virtual machine")
+#pc.defineParameter("nodeName",  "Name of the virtual machine",
+#                   portal.ParameterType.STRING, "",
+#                   longDescription="Specify a name for the virtual machine")
 
 params = pc.bindParameters() 
  
 # Create a XenVM
-# node = request.XenVM("build-vm")
-node = request.XenVM(params.nodeName)
+node = request.XenVM("build-vm")
+#node = request.XenVM(params.nodeName)
 node.xen_ptype = "build-vm"
 node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU20-64-STD"
 
