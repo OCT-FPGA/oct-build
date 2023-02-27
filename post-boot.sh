@@ -117,15 +117,6 @@ PACKAGE_VERSION=`grep ^$COMB: $SCRIPT_PATH/spec.txt | awk -F':' '{print $2}' | a
 XRT_VERSION=`grep ^$COMB: $SCRIPT_PATH/spec.txt | awk -F':' '{print $2}' | awk -F';' '{print $7}' | awk -F= '{print $2}'`
 U280=1
 
-echo "$REMOTEDESKTOP"
-if [ $REMOTEDESKTOP == "True" ] ; then
-    echo "Installing remote desktop software"
-    sudo apt install -y ubuntu-gnome-desktop
-    echo "Installed gnome desktop"
-    sudo systemctl set-default multi-user.target
-    sudo apt install -y tigervnc-standalone-server
-    echo "Installed vnc server"
-fi
 
 install_xrt
 install_shellpkg
@@ -136,6 +127,16 @@ if [ $? == 0 ] ; then
 else
     echo "XRT and/or shell package installation failed."
     exit 1
+fi
+
+echo "$REMOTEDESKTOP"
+if [ $REMOTEDESKTOP == "True" ] ; then
+    echo "Installing remote desktop software"
+    sudo apt install -y ubuntu-gnome-desktop
+    echo "Installed gnome desktop"
+    sudo systemctl set-default multi-user.target
+    sudo apt install -y tigervnc-standalone-server
+    echo "Installed vnc server"
 fi
 
 echo "Done running startup script."
