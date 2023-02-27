@@ -14,7 +14,7 @@ install_xrt() {
         echo "Installing XRT dependencies..."
         apt update
         echo "Installing XRT package..."
-        apt install -y /tmp/$XRT_PACKAGE
+        sudo apt install -y /tmp/$XRT_PACKAGE
     elif [[ "$OSVERSION" == "centos-7" ]] ; then
         echo "CentOS 7 XRT install"
         echo "Installing XRT dependencies..."
