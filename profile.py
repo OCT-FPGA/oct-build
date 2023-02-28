@@ -48,7 +48,7 @@ node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU20-64-STD
 node.cores = 4
 
 # Request a specific amount of memory (in MB).
-node.ram = 65536
+node.ram = 32768
 
 # Set Storage
 node.disk = 25
