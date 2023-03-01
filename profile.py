@@ -43,6 +43,7 @@ node = request.XenVM("build-vm")
 #node = request.XenVM(params.nodeName)
 node.xen_ptype = "build-vm"
 node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU20-64-STD"
+node.exclusive = False
 
 # Request a specific number of VCPUs.
 node.cores = 4
