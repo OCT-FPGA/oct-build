@@ -51,7 +51,7 @@ node.cores = 4
 node.ram = 32768
 
 # Set Storage
-node.disk = 25
+node.disk = 40
 
 if params.toolVersion != "Do not install tools":
   node.addService(pg.Execute(shell="bash", command="sudo /local/repository/post-boot.sh " + str(params.enableRemoteDesktop) + " " + params.toolVersion + " >> /local/repository/output_log.txt"))
