@@ -36,11 +36,11 @@ pc.defineParameter("enableRemoteDesktop", "Remote Desktop Access",
                    longDescription="Enable remote desktop access by installing Gnome desktop and VNC server.")
 
 pc.defineParameter("numRAM",  "Required RAM size",
-                   portal.ParameterType.INTEGER, numRAM[0],
+                   portal.ParameterType.STRING, numRAM[0],
                    longDescription="Required RAM size")
 
 pc.defineParameter("numCPU",  "Required no: of CPU cores",
-                   portal.ParameterType.INTEGER, numCPU[0],
+                   portal.ParameterType.STRING, numCPU[0],
                    longDescription="Required no: of CPU cores")
 
 params = pc.bindParameters() 
@@ -53,10 +53,10 @@ node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU20-64-STD
 node.exclusive = False
 
 # Request a specific number of VCPUs.
-node.cores = params.numCPU
+node.cores = int(params.numCPU)
 
 # Request a specific amount of memory (in MB).
-node.ram = 1024*params.numRAM
+node.ram = 1024*int(params.numRAM)
 
 # Set Storage
 node.disk = 40
