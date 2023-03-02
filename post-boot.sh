@@ -10,6 +10,11 @@ install_libs(){
     sudo apt install -y opencl-headers
     sudo /proj/octfpga-PG0/tools/Xilinx/Vitis/2022.1/scripts/installLibs.sh
 }
+
+install_dev_platform(){
+    sudo cp /proj/octfpga-PG0/tools/dev_platform/xilinx-u280-gen3x16-xdma-1-202211-1-dev_1-3585755_all.deb /tmp
+    sudo apt install /tmp/xilinx-u280-gen3x16-xdma-1-202211-1-dev_1-3585755_all.deb
+}
 install_xrt() {
     echo "Download XRT installation package"
     wget -cO - "https://www.xilinx.com/bin/public/openDownload?filename=$XRT_PACKAGE" > /tmp/$XRT_PACKAGE
@@ -135,6 +140,8 @@ else
     echo "XRT and/or shell package installation failed."
     exit 1
 fi
+
+install_dev_platform
 
 echo "$REMOTEDESKTOP"
 if [ $REMOTEDESKTOP == "True" ] ; then
