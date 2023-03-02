@@ -5,9 +5,9 @@
 #!/usr/bin/env bash
 
 install_libs(){
-    sudo apt install ocl-icd
-    sudo apt install ocl-icd-devel
-    sudo apt install opencl-headers
+    sudo apt install -y ocl-icd
+    sudo apt install -y ocl-icd-devel
+    sudo apt install -y opencl-headers
     sudo /proj/octfpga-PG0/tools/Xilinx/Vitis/2022.1/scripts/installLibs.sh
 }
 install_xrt() {
