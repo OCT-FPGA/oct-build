@@ -36,11 +36,11 @@ pc.defineParameter("enableRemoteDesktop", "Remote Desktop Access",
                    longDescription="Enable remote desktop access by installing Gnome desktop and VNC server.")
 
 pc.defineParameter("numRAM",  "Required RAM size",
-                   portal.ParameterType.STRING, numRAM[0],
+                   portal.ParameterType.STRING, numRAM[0], numRAM,
                    longDescription="Required RAM size")
 
 pc.defineParameter("numCPU",  "Required no: of CPU cores",
-                   portal.ParameterType.STRING, numCPU[0],
+                   portal.ParameterType.STRING, numCPU[0], numCPU,
                    longDescription="Required no: of CPU cores")
 
 params = pc.bindParameters() 
