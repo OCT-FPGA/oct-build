@@ -13,7 +13,10 @@ import geni.rspec.pg as pg
 # Create a Request object to start building the RSpec.
 pc = portal.Context()
 request = pc.makeRequestRSpec()
-    
+
+numRAM = [32, 64];
+numCPU = [4, 8, 12];
+
 toolVersion = [('2022.1'),
                #('2021.1'), 
                #('2020.2.1'), 
@@ -32,9 +35,13 @@ pc.defineParameter("enableRemoteDesktop", "Remote Desktop Access",
                    advanced=False,
                    longDescription="Enable remote desktop access by installing Gnome desktop and VNC server.")
 
-#pc.defineParameter("nodeName",  "Name of the virtual machine",
-#                   portal.ParameterType.STRING, "",
-#                   longDescription="Specify a name for the virtual machine")
+pc.defineParameter("numRAM",  "Required RAM size",
+                   portal.ParameterType.INTEGER, numRAM[0],
+                   longDescription="Required RAM size")
+
+pc.defineParameter("numCPU",  "Required no: of CPU cores",
+                   portal.ParameterType.INTEGER, numCPU[0],
+                   longDescription="Required no: of CPU cores")
 
 params = pc.bindParameters() 
  
@@ -46,10 +53,10 @@ node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU20-64-STD
 node.exclusive = False
 
 # Request a specific number of VCPUs.
-node.cores = 8
+node.cores = params.numCPU
 
 # Request a specific amount of memory (in MB).
-node.ram = 65536
+node.ram = 1024*params.numRAM
 
 # Set Storage
 node.disk = 40
