@@ -25,7 +25,7 @@ toolVersion = [('2022.1'),
                #('2020.1'),
                ('Do not install tools')] 
 
-pc.defineParameter("numRAM",  "Required RAM size",
+pc.defineParameter("numRAM",  "Required RAM size (GB)",
                    portal.ParameterType.INTEGER, numRAM[0], numRAM,
                    longDescription="Required RAM size")
 
