@@ -14,9 +14,6 @@ import geni.rspec.pg as pg
 pc = portal.Context()
 request = pc.makeRequestRSpec()
 
-#numRAM = [('32'), ('64'), ('96')]
-#numCPU = [('4'), ('8'), ('12'), ('16')]
-
 numRAM = [32, 64, 96]
 numCPU = [4, 8, 12, 16]
 
@@ -27,6 +24,14 @@ toolVersion = [('2022.1'),
                #('2020.1.1'),
                #('2020.1'),
                ('Do not install tools')] 
+
+pc.defineParameter("numRAM",  "Required RAM size",
+                   portal.ParameterType.INTEGER, numRAM[0], numRAM,
+                   longDescription="Required RAM size")
+
+pc.defineParameter("numCPU",  "Required no: of VCPUs",
+                   portal.ParameterType.INTEGER, numCPU[0], numCPU,
+                   longDescription="Required no: of VCPUs")
     
 pc.defineParameter("toolVersion", "Tool Version",
                    portal.ParameterType.STRING,
@@ -38,14 +43,6 @@ pc.defineParameter("enableRemoteDesktop", "Remote Desktop Access",
                    advanced=False,
                    longDescription="Enable remote desktop access by installing Gnome desktop and VNC server.")
 
-pc.defineParameter("numRAM",  "Required RAM size",
-                   portal.ParameterType.INTEGER, numRAM[0], numRAM,
-                   longDescription="Required RAM size")
-
-pc.defineParameter("numCPU",  "Required no: of CPU cores",
-                   portal.ParameterType.INTEGER, numCPU[0], numCPU,
-                   longDescription="Required no: of CPU cores")
-
 params = pc.bindParameters() 
  
 # Create a XenVM
@@ -56,10 +53,10 @@ node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU20-64-STD
 node.exclusive = False
 
 # Request a specific number of VCPUs.
-node.cores = int(params.numCPU)
+node.cores = params.numCPU
 
 # Request a specific amount of memory (in MB).
-node.ram = 1024*int(params.numRAM)
+node.ram = 1024*params.numRAM
 
 # Set Storage
 node.disk = 40
