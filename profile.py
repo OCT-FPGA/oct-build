@@ -14,8 +14,8 @@ import geni.rspec.pg as pg
 pc = portal.Context()
 request = pc.makeRequestRSpec()
 
-numRAM = [32, 64];
-numCPU = [4, 8, 12];
+numRAM = [32, 64, 96];
+numCPU = [4, 8, 12, 16];
 
 toolVersion = [('2022.1'),
                #('2021.1'), 
