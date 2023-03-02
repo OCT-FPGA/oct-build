@@ -4,6 +4,9 @@
 #
 #!/usr/bin/env bash
 
+install_libs(){
+    sudo /proj/octfpga-PG0/tools/Xilinx/Vitis/2022.1/scripts/installLibs.sh
+}
 install_xrt() {
     echo "Download XRT installation package"
     wget -cO - "https://www.xilinx.com/bin/public/openDownload?filename=$XRT_PACKAGE" > /tmp/$XRT_PACKAGE
@@ -106,9 +109,10 @@ VERSION_ID=`grep '^VERSION_ID=' /etc/os-release | awk -F= '{print $2}'`
 VERSION_ID=`echo $VERSION_ID | tr -d '"'`
 OSVERSION="$OSVERSION-$VERSION_ID"
 REMOTEDESKTOP=$1
-TOOLVERSION=$2
+XRTVERSION=$2
+VITISVERSION="2022.1"
 SCRIPT_PATH=/local/repository
-COMB="${TOOLVERSION}_${OSVERSION}"
+COMB="${XRTVERSION}_${OSVERSION}"
 XRT_PACKAGE=`grep ^$COMB: $SCRIPT_PATH/spec.txt | awk -F':' '{print $2}' | awk -F';' '{print $1}' | awk -F= '{print $2}'`
 SHELL_PACKAGE=`grep ^$COMB: $SCRIPT_PATH/spec.txt | awk -F':' '{print $2}' | awk -F';' '{print $2}' | awk -F= '{print $2}'`
 DSA=`grep ^$COMB: $SCRIPT_PATH/spec.txt | awk -F':' '{print $2}' | awk -F';' '{print $3}' | awk -F= '{print $2}'`
@@ -117,7 +121,7 @@ PACKAGE_VERSION=`grep ^$COMB: $SCRIPT_PATH/spec.txt | awk -F':' '{print $2}' | a
 XRT_VERSION=`grep ^$COMB: $SCRIPT_PATH/spec.txt | awk -F':' '{print $2}' | awk -F';' '{print $7}' | awk -F= '{print $2}'`
 U280=1
 
-
+install_libs
 install_xrt
 install_shellpkg
 verify_install
