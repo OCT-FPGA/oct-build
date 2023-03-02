@@ -14,8 +14,11 @@ import geni.rspec.pg as pg
 pc = portal.Context()
 request = pc.makeRequestRSpec()
 
-numRAM = [('32'), ('64'), ('96')]
-numCPU = [('4'), ('8'), ('12'), ('16')]
+#numRAM = [('32'), ('64'), ('96')]
+#numCPU = [('4'), ('8'), ('12'), ('16')]
+
+numRAM = [32, 64, 96]
+numCPU = [4, 8, 12, 16]
 
 toolVersion = [('2022.1'),
                #('2021.1'), 
@@ -36,11 +39,11 @@ pc.defineParameter("enableRemoteDesktop", "Remote Desktop Access",
                    longDescription="Enable remote desktop access by installing Gnome desktop and VNC server.")
 
 pc.defineParameter("numRAM",  "Required RAM size",
-                   portal.ParameterType.STRING, numRAM[0], numRAM,
+                   portal.ParameterType.INTEGER, numRAM[0], numRAM,
                    longDescription="Required RAM size")
 
 pc.defineParameter("numCPU",  "Required no: of CPU cores",
-                   portal.ParameterType.STRING, numCPU[0], numCPU,
+                   portal.ParameterType.INTEGER, numCPU[0], numCPU,
                    longDescription="Required no: of CPU cores")
 
 params = pc.bindParameters() 
