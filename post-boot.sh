@@ -9,7 +9,6 @@ install_libs(){
     sudo yum install ocl-icd-devel
     sudo yum install opencl-headers
     sudo /proj/octfpga-PG0/tools/Xilinx/Vitis/2022.1/scripts/installLibs.sh
-    sudo /proj/octfpga-PG0/tools/Xilinx/Vitis/2022.1/scripts/installLibs.sh
 }
 install_xrt() {
     echo "Download XRT installation package"
