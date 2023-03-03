@@ -65,7 +65,7 @@ node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU20-64-STD
 # Set Storage
 #node.disk = 40
 
-if params.toolVersion != "Do not install tools":
+if params.xrtVersion != "Do not install tools":
   node.addService(pg.Execute(shell="bash", command="sudo /local/repository/post-boot.sh " + str(params.enableRemoteDesktop) + " " + params.xrtVersion + " " + params.vitisVersion " >> /local/repository/output_log.txt"))
 pass 
    
