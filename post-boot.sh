@@ -15,7 +15,7 @@ install_libs(){
 install_dev_platform(){
     echo "Install dev platform"
     sudo cp /proj/octfpga-PG0/tools/dev_platform/${XRTVERSION}/*.deb /tmp
-    sudo apt install /tmp/*.deb
+    sudo apt install /tmp/xilinx-u280*.deb
 }
 
 install_xrt() {
