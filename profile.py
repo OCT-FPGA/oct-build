@@ -1,4 +1,4 @@
-"""This profile is used to instantiate a build VM in OCT. This profile is still under testing. DO NOT USE.
+"""This profile is used to instantiate a build VM in OCT. DO NOT USE 
 
 Instructions:
 Wait for the profile instance to start, and then log in to the VM via the
