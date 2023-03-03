@@ -13,7 +13,7 @@ install_libs(){
 }
 
 install_dev_platform(){
-    sudo cp /proj/octfpga-PG0/tools/dev_platform/*.deb /tmp
+    sudo cp /proj/octfpga-PG0/tools/dev_platform/${XRTVERSION}/*.deb /tmp
     sudo apt install /tmp/*.deb
 }
 
@@ -88,7 +88,7 @@ VERSION_ID=`echo $VERSION_ID | tr -d '"'`
 OSVERSION="$OSVERSION-$VERSION_ID"
 REMOTEDESKTOP=$1
 XRTVERSION=$2
-VITISVERSION="2022.1"
+VITISVERSION=$3
 SCRIPT_PATH=/local/repository
 COMB="${XRTVERSION}_${OSVERSION}"
 XRT_PACKAGE=`grep ^$COMB: $SCRIPT_PATH/spec.txt | awk -F':' '{print $2}' | awk -F';' '{print $1}' | awk -F= '{print $2}'`
