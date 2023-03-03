@@ -5,8 +5,8 @@
 #!/usr/bin/env bash
 
 install_libs(){
-    sudo apt install -y ocl-icd
-    sudo apt install -y ocl-icd-devel
+    #sudo apt install -y ocl-icd
+    #sudo apt install -y ocl-icd-devel
     sudo apt install -y opencl-headers
     sudo /proj/octfpga-PG0/tools/Xilinx/Vitis/${VITISVERSION}/scripts/installLibs.sh
 }
