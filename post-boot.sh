@@ -15,33 +15,16 @@ install_dev_platform(){
     sudo cp /proj/octfpga-PG0/tools/dev_platform/xilinx-u280-gen3x16-xdma-1-202211-1-dev_1-3585755_all.deb /tmp
     sudo apt install /tmp/xilinx-u280-gen3x16-xdma-1-202211-1-dev_1-3585755_all.deb
 }
+
 install_xrt() {
     echo "Download XRT installation package"
     wget -cO - "https://www.xilinx.com/bin/public/openDownload?filename=$XRT_PACKAGE" > /tmp/$XRT_PACKAGE
-    
     echo "Install XRT"
-    if [[ "$OSVERSION" == "ubuntu-16.04" ]] || [[ "$OSVERSION" == "ubuntu-18.04" ]] || [[ "$OSVERSION" == "ubuntu-20.04" ]]; then
-        echo "Ubuntu XRT install"
-        echo "Installing XRT dependencies..."
-        apt update
-        echo "Installing XRT package..."
-        sudo apt install -y /tmp/$XRT_PACKAGE
-    elif [[ "$OSVERSION" == "centos-7" ]] ; then
-        echo "CentOS 7 XRT install"
-        echo "Installing XRT dependencies..."
-        yum install -y epel-release
-        echo "Installing XRT package..."
-        yum install -y /tmp/$XRT_PACKAGE
-    elif [[ "$OSVERSION" == "centos-8" ]]; then
-        echo "CentOS 8 XRT install"
-        echo "Installing XRT dependencies..."
-        #sudo yum remove -y xrt
-        yum config-manager --set-enabled powertools
-        yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
-        yum config-manager --set-enabled appstream
-        echo "Installing XRT package..."
-        sudo yum install -y /tmp/$XRT_PACKAGE
-    fi
+    echo "Ubuntu XRT install"
+    echo "Installing XRT dependencies..."
+    apt update
+    echo "Installing XRT package..."
+    sudo apt install -y /tmp/$XRT_PACKAGE
     sudo bash -c "echo 'source /opt/xilinx/xrt/setup.sh' >> /etc/profile"
 }
 
@@ -52,19 +35,11 @@ fi
 }
 
 check_shellpkg() {
-    if [[ "$OSVERSION" == "ubuntu-16.04" ]] || [[ "$OSVERSION" == "ubuntu-18.04" ]] || [[ "$OSVERSION" == "ubuntu-20.04" ]]; then
-        PACKAGE_INSTALL_INFO=`apt list --installed 2>/dev/null | grep "$PACKAGE_NAME" | grep "$PACKAGE_VERSION"`
-    elif [[ "$OSVERSION" == "centos-7" ]] || [[ "$OSVERSION" == "centos-8" ]]; then
-        PACKAGE_INSTALL_INFO=`yum list installed 2>/dev/null | grep "$PACKAGE_NAME" | grep "$PACKAGE_VERSION"`
-    fi
+    PACKAGE_INSTALL_INFO=`apt list --installed 2>/dev/null | grep "$PACKAGE_NAME" | grep "$PACKAGE_VERSION"`
 }
 
 check_xrt() {
-    if [[ "$OSVERSION" == "ubuntu-16.04" ]] || [[ "$OSVERSION" == "ubuntu-18.04" ]] || [[ "$OSVERSION" == "ubuntu-20.04" ]]; then
-        XRT_INSTALL_INFO=`apt list --installed 2>/dev/null | grep "xrt" | grep "$XRT_VERSION"`
-    elif [[ "$OSVERSION" == "centos-7" ]] || [[ "$OSVERSION" == "centos-8" ]]; then
-        XRT_INSTALL_INFO=`yum list installed 2>/dev/null | grep "xrt" | grep "$XRT_VERSION"`
-    fi
+    XRT_INSTALL_INFO=`apt list --installed 2>/dev/null | grep "xrt" | grep "$XRT_VERSION"`
 }
 
 install_u280_shell() {
@@ -78,15 +53,9 @@ install_u280_shell() {
             rm /tmp/$SHELL_PACKAGE
         fi
         echo "Install Shell"
-        if [[ "$OSVERSION" == "ubuntu-16.04" ]] || [[ "$OSVERSION" == "ubuntu-18.04" ]] || [[ "$OSVERSION" == "ubuntu-20.04" ]]; then
-            echo "Install Ubuntu shell package"
-            apt-get install -y /tmp/xilinx*
-        elif [[ "$OSVERSION" == "centos-7" ]] || [[ "$OSVERSION" == "centos-8" ]]; then
-            echo "Install CentOS shell package"
-            yum install -y /tmp/xilinx*
-        fi
+        echo "Install Ubuntu shell package"
+        apt-get install -y /tmp/xilinx*
         rm /tmp/xilinx*
-        #if [[ -f /tmp/$SHELL_PACKAGE ]]; then rm /tmp/$SHELL_PACKAGE; fi
     else
         echo "The package is already installed. "
     fi
