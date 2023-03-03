@@ -1,4 +1,4 @@
-"""This profile is used to instantiate a build VM in OCT
+"""This profile is used to instantiate a build VM in OCT. This profile is still under testing. DO NOT USE.
 
 Instructions:
 Wait for the profile instance to start, and then log in to the VM via the
@@ -46,20 +46,22 @@ pc.defineParameter("enableRemoteDesktop", "Remote Desktop Access",
 params = pc.bindParameters() 
  
 # Create a XenVM
-node = request.XenVM("build-vm")
-#node = request.XenVM(params.nodeName)
-node.xen_ptype = "build-vm"
+# node = request.XenVM("build-vm")
+name = "node" + str(0)
+node = request.RawPC(name)
+# node.xen_ptype = "build-vm"
+node.hardware_type = "fpga-alveo"
 node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU20-64-STD"
-node.exclusive = False
+# node.exclusive = False
 
 # Request a specific number of VCPUs.
-node.cores = params.numCPU
+#node.cores = params.numCPU
 
 # Request a specific amount of memory (in MB).
-node.ram = 1024*params.numRAM
+#node.ram = 1024*params.numRAM
 
 # Set Storage
-node.disk = 40
+#node.disk = 40
 
 if params.toolVersion != "Do not install tools":
   node.addService(pg.Execute(shell="bash", command="sudo /local/repository/post-boot.sh " + str(params.enableRemoteDesktop) + " " + params.toolVersion + " >> /local/repository/output_log.txt"))
