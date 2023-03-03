@@ -17,13 +17,10 @@ request = pc.makeRequestRSpec()
 numRAM = [32, 64, 96]
 numCPU = [4, 8, 12]
 
-toolVersion = [('2022.1'),
-               #('2021.1'), 
-               #('2020.2.1'), 
-               #('2020.2'), 
-               #('2020.1.1'),
-               #('2020.1'),
-               ('Do not install tools')] 
+vitisVersion = [('2022.1')]
+
+xrtVersion = [('2022.1'),
+             ('Do not install tools')] 
 
 pc.defineParameter("numRAM",  "Required RAM size (GB)",
                    portal.ParameterType.INTEGER, numRAM[0], numRAM,
@@ -32,10 +29,15 @@ pc.defineParameter("numRAM",  "Required RAM size (GB)",
 pc.defineParameter("numCPU",  "Required no: of VCPUs",
                    portal.ParameterType.INTEGER, numCPU[0], numCPU,
                    longDescription="Required no: of VCPUs")
-    
-pc.defineParameter("toolVersion", "Tool Version",
+
+pc.defineParameter("vitisVersion", "Vitis Version",
                    portal.ParameterType.STRING,
-                   toolVersion[0], toolVersion,
+                   vitisVersion[0], vitisVersion,
+                   longDescription="Select the Vitis version")   
+
+pc.defineParameter("xrtVersion", "XRT Version",
+                   portal.ParameterType.STRING,
+                   xrtVersion[0], xrtVersion,
                    longDescription="Select a tool version. It is recommended to use the latest version for the deployment workflow. For more information, visit https://www.xilinx.com/products/boards-and-kits/alveo/u280.html#gettingStarted")   
 
 pc.defineParameter("enableRemoteDesktop", "Remote Desktop Access",
@@ -64,7 +66,7 @@ node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU20-64-STD
 #node.disk = 40
 
 if params.toolVersion != "Do not install tools":
-  node.addService(pg.Execute(shell="bash", command="sudo /local/repository/post-boot.sh " + str(params.enableRemoteDesktop) + " " + params.toolVersion + " >> /local/repository/output_log.txt"))
+  node.addService(pg.Execute(shell="bash", command="sudo /local/repository/post-boot.sh " + str(params.enableRemoteDesktop) + " " + params.xrtVersion + " " + params.vitisVersion " >> /local/repository/output_log.txt"))
 pass 
    
 
