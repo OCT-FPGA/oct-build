@@ -1,4 +1,4 @@
-"""An example of constructing a profile with a single Xen VM.
+"""This profile is used to instantiate a build VM in OCT
 
 Instructions:
 Wait for the profile instance to start, and then log in to the VM via the
