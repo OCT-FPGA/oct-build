@@ -13,8 +13,8 @@ install_libs(){
 }
 
 install_dev_platform(){
-    sudo cp /proj/octfpga-PG0/tools/dev_platform/xilinx-u280-gen3x16-xdma-1-202211-1-dev_1-3585755_all.deb /tmp
-    sudo apt install /tmp/xilinx-u280-gen3x16-xdma-1-202211-1-dev_1-3585755_all.deb
+    sudo cp /proj/octfpga-PG0/tools/dev_platform/*.deb /tmp
+    sudo apt install /tmp/*.deb
 }
 
 install_xrt() {
