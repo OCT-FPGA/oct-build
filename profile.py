@@ -31,7 +31,7 @@ pc.defineParameter("numCPU",  "No: of VCPUs",
 
 pc.defineParameter("vitisVersion", "Vitis Version",
                    portal.ParameterType.STRING,
-                   vitisVersion[1], vitisVersion,
+                   vitisVersion[0], vitisVersion,
                    longDescription="Select the Vitis version")   
 
 pc.defineParameter("xrtVersion", "XRT Version",
