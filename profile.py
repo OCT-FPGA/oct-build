@@ -21,8 +21,7 @@ vitisVersion = [('2021.2'),
                 #('2022.1')
                ]
 
-xrtVersion = [('2021.1'), #('2022.1'), 
-              ('Do not install tools')] 
+xrtVersion = [('2021.1'), #('2022.1')] 
 
 pc.defineParameter("numRAM",  "RAM size (GB)",
                    portal.ParameterType.INTEGER, numRAM[0], numRAM,
