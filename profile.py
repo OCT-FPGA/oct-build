@@ -42,7 +42,7 @@ pc.defineParameter("enableRemoteDesktop", "Remote Desktop Access",
                    advanced=False,
                    longDescription="Enable remote desktop access by installing GNOME desktop and VNC server.")
 
-#params = pc.bindParameters() 
+params = pc.bindParameters() 
  
 # Create a XenVM
 node = request.XenVM("build-vm")
