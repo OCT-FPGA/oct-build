@@ -53,7 +53,7 @@ node = request.XenVM("build-vm")
 # name = "node" + str(0)
 # node = request.RawPC(name)
 node.xen_ptype = "build-vm"
-node.hardware_type = "fpga-alveo"
+# node.hardware_type = "fpga-alveo"
 node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU18-64-STD"
 # node.exclusive = False
 
