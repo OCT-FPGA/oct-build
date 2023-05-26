@@ -14,35 +14,35 @@ import geni.rspec.pg as pg
 pc = portal.Context()
 request = pc.makeRequestRSpec()
 
-numRAM = [32, 64, 96]
-numCPU = [4, 8, 12]
-vitisVersion = [('2021.2')]
-xrtVersion = [('2021.1')] 
+#numRAM = [32, 64, 96]
+#numCPU = [4, 8, 12]
+#vitisVersion = [('2021.2')]
+#xrtVersion = [('2021.1')] 
 
-pc.defineParameter("numRAM",  "RAM size (GB)",
-                   portal.ParameterType.INTEGER, numRAM[0], numRAM,
-                   longDescription="RAM size")
+#pc.defineParameter("numRAM",  "RAM size (GB)",
+#                   portal.ParameterType.INTEGER, numRAM[0], numRAM,
+#                   longDescription="RAM size")
 
-pc.defineParameter("numCPU",  "No: of VCPUs",
-                   portal.ParameterType.INTEGER, numCPU[0], numCPU,
-                   longDescription="No: of VCPUs")
+#pc.defineParameter("numCPU",  "No: of VCPUs",
+#                   portal.ParameterType.INTEGER, numCPU[0], numCPU,
+#                   longDescription="No: of VCPUs")
 
-pc.defineParameter("vitisVersion", "Vitis Version",
-                   portal.ParameterType.STRING,
-                   vitisVersion[0], vitisVersion,
-                   longDescription="Select the Vitis version.")   
+#pc.defineParameter("vitisVersion", "Vitis Version",
+#                   portal.ParameterType.STRING,
+#                   vitisVersion[0], vitisVersion,
+#                   longDescription="Select the Vitis version.")   
 
-pc.defineParameter("xrtVersion", "XRT Version",
-                   portal.ParameterType.STRING,
-                   xrtVersion[0], xrtVersion,
-                   longDescription="Select the tool version.")   
+#pc.defineParameter("xrtVersion", "XRT Version",
+#                   portal.ParameterType.STRING,
+#                   xrtVersion[0], xrtVersion,
+#                   longDescription="Select the tool version.")   
 
-pc.defineParameter("enableRemoteDesktop", "Remote Desktop Access",
-                   portal.ParameterType.BOOLEAN, False,
-                   advanced=False,
-                   longDescription="Enable remote desktop access by installing GNOME desktop and VNC server.")
+#pc.defineParameter("enableRemoteDesktop", "Remote Desktop Access",
+#                   portal.ParameterType.BOOLEAN, False,
+#                   advanced=False,
+#                   longDescription="Enable remote desktop access by installing GNOME desktop and VNC server.")
 
-params = pc.bindParameters() 
+#params = pc.bindParameters() 
  
 # Create a XenVM
 node = request.XenVM("build-vm")
