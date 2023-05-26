@@ -63,7 +63,7 @@ node.ram = 65536 #1024*params.numRAM
 # Set Storage
 node.disk = 100
 
-node.addService(pg.Execute(shell="bash", command="sudo /local/repository/post-boot.sh " + str(params.enableRemoteDesktop) + " " + params.xrtVersion + " " + params.vitisVersion + " >> /local/repository/output_log.txt"))  
+# node.addService(pg.Execute(shell="bash", command="sudo /local/repository/post-boot.sh " + str(params.enableRemoteDesktop) + " " + params.xrtVersion + " " + params.vitisVersion + " >> /local/repository/output_log.txt"))  
 
 # Print the RSpec to the enclosing page.
 portal.context.printRequestRSpec()
