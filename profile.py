@@ -16,8 +16,8 @@ request = pc.makeRequestRSpec()
 
 #numRAM = [32, 64, 96]
 #numCPU = [4, 8, 12]
-#vitisVersion = [('2021.2')]
-#xrtVersion = [('2021.1')] 
+vitisVersion = [('2022.1')]
+xrtVersion = [('2022.2')] 
 
 #pc.defineParameter("numRAM",  "RAM size (GB)",
 #                   portal.ParameterType.INTEGER, numRAM[0], numRAM,
@@ -27,20 +27,20 @@ request = pc.makeRequestRSpec()
 #                   portal.ParameterType.INTEGER, numCPU[0], numCPU,
 #                   longDescription="No: of VCPUs")
 
-#pc.defineParameter("vitisVersion", "Vitis Version",
-#                   portal.ParameterType.STRING,
-#                   vitisVersion[0], vitisVersion,
-#                   longDescription="Select the Vitis version.")   
+pc.defineParameter("vitisVersion", "Vitis Version",
+                   portal.ParameterType.STRING,
+                   vitisVersion[0], vitisVersion,
+                   longDescription="Select the Vitis version.")   
 
-#pc.defineParameter("xrtVersion", "XRT Version",
-#                   portal.ParameterType.STRING,
-#                   xrtVersion[0], xrtVersion,
-#                   longDescription="Select the tool version.")   
+pc.defineParameter("xrtVersion", "XRT Version",
+                   portal.ParameterType.STRING,
+                   xrtVersion[0], xrtVersion,
+                   longDescription="Select the tool version.")   
 
-#pc.defineParameter("enableRemoteDesktop", "Remote Desktop Access",
-#                   portal.ParameterType.BOOLEAN, False,
-#                   advanced=False,
-#                   longDescription="Enable remote desktop access by installing GNOME desktop and VNC server.")
+pc.defineParameter("enableRemoteDesktop", "Remote Desktop Access",
+                   portal.ParameterType.BOOLEAN, False,
+                   advanced=False,
+                   longDescription="Enable remote desktop access by installing GNOME desktop and VNC server.")
 
 #params = pc.bindParameters() 
  
@@ -64,7 +64,7 @@ node.ram = 65536 #1024*params.numRAM
 # Set Storage
 node.disk = 100
 
-# node.addService(pg.Execute(shell="bash", command="sudo /local/repository/post-boot.sh " + str(params.enableRemoteDesktop) + " " + params.xrtVersion + " " + params.vitisVersion + " >> /local/repository/output_log.txt"))  
+node.addService(pg.Execute(shell="bash", command="sudo /local/repository/post-boot.sh " + str(params.enableRemoteDesktop) + " " + params.xrtVersion + " " + params.vitisVersion + " >> /local/repository/output_log.txt"))  
 
 # Print the RSpec to the enclosing page.
 portal.context.printRequestRSpec()
