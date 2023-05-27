@@ -16,7 +16,7 @@ request = pc.makeRequestRSpec()
 
 #numRAM = [32, 64, 96]
 #numCPU = [4, 8, 12]
-vitisVersion = [('2022.1')]
+vitisVersion = [('2022.2')]
 xrtVersion = [('2022.2')] 
 
 #pc.defineParameter("numRAM",  "RAM size (GB)",
