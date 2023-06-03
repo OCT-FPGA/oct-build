@@ -14,14 +14,14 @@ import geni.rspec.pg as pg
 pc = portal.Context()
 request = pc.makeRequestRSpec()
 
-#numRAM = [32, 64, 96]
+numRAM = [32, 64, 96]
 numCPU = [4, 8, 12]
 vitisVersion = [('2022.2')]
 xrtVersion = [('2022.2')] 
 
-#pc.defineParameter("numRAM",  "RAM size (GB)",
-#                   portal.ParameterType.INTEGER, numRAM[0], numRAM,
-#                   longDescription="RAM size")
+pc.defineParameter("numRAM",  "RAM size (GB)",
+                   portal.ParameterType.INTEGER, numRAM[0], numRAM,
+                   longDescription="RAM size")
 
 pc.defineParameter("numCPU",  "No: of VCPUs",
                    portal.ParameterType.INTEGER, numCPU[0], numCPU,
@@ -59,7 +59,7 @@ node.component_manager_id = "urn:publicid:IDN+cloudlab.umass.edu+authority+cm"
 node.cores = params.numCPU
 
 # Request a specific amount of memory (in MB).
-node.ram = 32768 #1024*params.numRAM
+node.ram = 1024*params.numRAM
 
 # Set Storage
 node.disk = 100
