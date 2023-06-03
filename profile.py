@@ -15,7 +15,7 @@ pc = portal.Context()
 request = pc.makeRequestRSpec()
 
 #numRAM = [32, 64, 96]
-#numCPU = [4, 8, 12]
+numCPU = [4, 8, 12]
 vitisVersion = [('2022.2')]
 xrtVersion = [('2022.2')] 
 
@@ -23,9 +23,9 @@ xrtVersion = [('2022.2')]
 #                   portal.ParameterType.INTEGER, numRAM[0], numRAM,
 #                   longDescription="RAM size")
 
-#pc.defineParameter("numCPU",  "No: of VCPUs",
-#                   portal.ParameterType.INTEGER, numCPU[0], numCPU,
-#                   longDescription="No: of VCPUs")
+pc.defineParameter("numCPU",  "No: of VCPUs",
+                   portal.ParameterType.INTEGER, numCPU[0], numCPU,
+                   longDescription="No: of VCPUs")
 
 pc.defineParameter("vitisVersion", "Vitis Version",
                    portal.ParameterType.STRING,
@@ -56,7 +56,7 @@ node.component_manager_id = "urn:publicid:IDN+cloudlab.umass.edu+authority+cm"
 # node.exclusive = False
 
 # Request a specific number of VCPUs.
-node.cores = 4 #params.numCPU
+node.cores = params.numCPU
 
 # Request a specific amount of memory (in MB).
 node.ram = 32768 #1024*params.numRAM
