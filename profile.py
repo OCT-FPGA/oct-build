@@ -15,7 +15,7 @@ pc = portal.Context()
 request = pc.makeRequestRSpec()
 
 numRAM = [32, 64, 96]
-numCPU = [4, 8, 12]
+numCPU = [2, 4, 8, 12]
 vitisVersion = [('2022.2')]
 xrtVersion = [('2022.2')] 
 
