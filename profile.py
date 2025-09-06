@@ -50,9 +50,8 @@ pc.defineParameter("docker",  "Install docker",
 params = pc.bindParameters() 
  
 # Create a XenVM
-node = request.XenVM("build-vm")
-# name = "node" + str(0)
-# node = request.RawPC(name)
+name = "node" + str(0)
+node = request.RawPC(name)
 #node.xen_ptype = "build-vm"
 node.hardware_type = "build-flax0"
 node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU20-64-STD"
