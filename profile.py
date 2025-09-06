@@ -17,11 +17,9 @@ request = pc.makeRequestRSpec()
 numRAM = [32, 64, 96]
 numCPU = [4, 8, 12]
 
-vitisVersion = [('2021.2'), 
-                #('2022.1')
-               ]
+vitisVersion = ['2023.2', '2023.1']
 
-xrtVersion = [('2021.1')] 
+xrtVersion = ['2023.2', '2023.1'] 
 
 pc.defineParameter("numRAM",  "RAM size (GB)",
                    portal.ParameterType.INTEGER, numRAM[0], numRAM,
@@ -54,7 +52,7 @@ name = "node" + str(0)
 node = request.RawPC(name)
 #node.xen_ptype = "build-vm"
 node.hardware_type = "build-flax0"
-node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU18-64-STD"
+node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU20-64-STD"
 # node.exclusive = False
 
 # Request a specific number of VCPUs.
