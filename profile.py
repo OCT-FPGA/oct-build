@@ -59,7 +59,7 @@ node.cores = params.CPU
 
 # Request a specific amount of memory (in MB).
 
-node.ram = 2048
+node.ram = 1024
 
 # Set Storage
 #node.disk = 100
