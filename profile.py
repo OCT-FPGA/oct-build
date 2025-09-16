@@ -52,7 +52,7 @@ node = request.XenVM('umass-vm',phost,exclusive)
 #node.xen_ptype = "build"
 # node.hardware_type = "fpga-alveo"
 node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU22-64-STD"
-node.component_manager_id = "urn:publicid:IDN+cloudlab.umass.edu+authority+cm"
+node.setFailureAction('nonfatal')
 
 # Request a specific number of VCPUs.
 node.cores = params.numCPU
