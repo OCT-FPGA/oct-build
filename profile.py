@@ -17,8 +17,7 @@ request = pc.makeRequestRSpec()
 
 RAM = [16, 32, 64, 96]
 CPU = [2, 4, 8, 12]
-vitisVersion = [('2023.1')]
-xrtVersion = [('2023.1')] 
+toolVersion = ['2023.1', '2023.2'] 
 nodeName= ['fpga-build1', 'fpga-build2', 'build']
 
 pc.defineParameter("RAM",  "RAM size (GB)",
@@ -29,14 +28,9 @@ pc.defineParameter("CPU",  "No: of VCPUs",
                    portal.ParameterType.INTEGER, CPU[0], CPU,
                    longDescription="No: of VCPUs")
 
-pc.defineParameter("vitisVersion", "Vitis Version",
+pc.defineParameter("toolVersion", "Tool Version",
                    portal.ParameterType.STRING,
-                   vitisVersion[0], vitisVersion,
-                   longDescription="Select the Vitis version.")   
-
-pc.defineParameter("xrtVersion", "XRT Version",
-                   portal.ParameterType.STRING,
-                   xrtVersion[0], xrtVersion,
+                   toolVersion[0], toolVersion,
                    longDescription="Select the tool version.")   
 
 pc.defineParameter("nodeName", "Physical host",
@@ -70,7 +64,7 @@ node.ram = 1024*params.RAM
 # Set Storage
 #node.disk = 100
 
-#node.addService(pg.Execute(shell="bash", command="sudo /local/repository/post-boot.sh " + str(params.enableRemoteDesktop) + " " + params.xrtVersion + " " + params.vitisVersion + " >> /local/repository/output_log.txt"))  
+node.addService(pg.Execute(shell="bash", command="sudo /local/repository/post-boot.sh " + str(params.enableRemoteDesktop) + " " + params.toolVersion + " >> /local/repository/output_log.txt"))  
 
 # Print the RSpec to the enclosing page.
 portal.context.printRequestRSpec()
