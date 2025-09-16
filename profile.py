@@ -9,6 +9,7 @@ a public IP address for the VM itself.)
 
 import geni.portal as portal
 import geni.rspec.pg as pg
+import geni.rspec.emulab as emulab
 
 # Create a Request object to start building the RSpec.
 pc = portal.Context()
