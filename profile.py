@@ -47,7 +47,7 @@ params = pc.bindParameters()
 # Create a XenVM
 phost='urn:publicid:IDN+cloudlab.umass.edu+node+fpga-build1'
 exclusive=False
-node_vm = request.XenVM('umass-vm',phost,exclusive)
+node = request.XenVM('umass-vm',phost,exclusive)
 
 #node.xen_ptype = "build"
 # node.hardware_type = "fpga-alveo"
