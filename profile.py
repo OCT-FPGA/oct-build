@@ -56,15 +56,16 @@ node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU22-64-STD
 node.setFailureAction('nonfatal')
 
 # Request a specific number of VCPUs.
-node.cores = params.numCPU
+#node.cores = params.numCPU
 
 # Request a specific amount of memory (in MB).
-node.ram = 1024*params.numRAM
+
+#node.ram = 1024*params.numRAM
 
 # Set Storage
-node.disk = 100
+#node.disk = 100
 
-node.addService(pg.Execute(shell="bash", command="sudo /local/repository/post-boot.sh " + str(params.enableRemoteDesktop) + " " + params.xrtVersion + " " + params.vitisVersion + " >> /local/repository/output_log.txt"))  
+#node.addService(pg.Execute(shell="bash", command="sudo /local/repository/post-boot.sh " + str(params.enableRemoteDesktop) + " " + params.xrtVersion + " " + params.vitisVersion + " >> /local/repository/output_log.txt"))  
 
 # Print the RSpec to the enclosing page.
 portal.context.printRequestRSpec()
