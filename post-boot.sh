@@ -26,7 +26,7 @@ install_xrt() {
         apt install -y $XRT_BASE_PATH/$TOOLVERSION/$OSVERSION/$XRT_PACKAGE
     fi
     sudo bash -c "echo 'source /opt/xilinx/xrt/setup.sh' >> /etc/profile"
-    sudo bash -c "echo 'source $VITIS_BASE_PATH/$VITISVERSION/settings64.sh' >> /etc/profile"
+    sudo bash -c "echo 'source $VITIS_BASE_PATH/$TOOLVERSION/settings64.sh' >> /etc/profile"
 }
 
 check_shellpkg() {
@@ -90,44 +90,9 @@ install_u280_shell() {
     fi
 }
 
-flash_card() {
-    echo "Flash Card(s). "
-    /opt/xilinx/xrt/bin/xbmgmt program --base --device $PCI_ADDR
-}
-
-detect_cards() {
-    lspci > /dev/null
-    if [ $? != 0 ] ; then
-        if [[ "$OSVERSION" == "ubuntu-20.04" ]] || [[ "$OSVERSION" == "ubuntu-22.04" ]]; then
-            apt-get install -y pciutils
-        elif [[ "$OSVERSION" == "centos-7" ]] || [[ "$OSVERSION" == "centos-8" ]]; then
-            yum install -y pciutils
-        fi
-    fi
-    if [[ "$OSVERSION" == "ubuntu-20.04" ]] || [[ "$OSVERSION" == "ubuntu-22.04" ]]; then
-        PCI_ADDR=$(lspci -d 10ee: | awk '{print $1}' | head -n 1)
-        if [ -n "$PCI_ADDR" ]; then
-            U280=$((U280 + 1))
-        else
-            echo "Error: No card detected."
-            exit 1
-        fi
-    fi
-}
-
-install_config_fpga() {
-    echo "Installing config-fpga."
-    cp $CONFIG_FPGA_PATH/* /usr/local/bin
-}
-
 install_libs() {
     echo "Installing libs."
-    sudo $VITIS_BASE_PATH/$VITISVERSION/scripts/installLibs.sh
-}
-
-disable_pcie_fatal_error() {
-    echo "Disabling PCIe fatal error reporting for node: $NODE_ID"
-    sudo /proj/octfpga-PG0/tools/pcie_disable_fatal.sh $PCI_ADDR
+    sudo $VITIS_BASE_PATH/$TOOLVERSION/scripts/installLibs.sh
 }
 
 XRT_BASE_PATH="/proj/octfpga-PG0/tools/deployment/xrt"
@@ -154,7 +119,6 @@ XRT_VERSION=`grep ^$COMB: $SCRIPT_PATH/spec.txt | awk -F':' '{print $2}' | awk -
 FACTORY_SHELL="xilinx_u280_GOLDEN_8"
 NODE_ID=$(hostname | cut -d'.' -f1)
 
-detect_cards
 check_xrt
 if [ $? == 0 ]; then
     echo "XRT is already installed."
