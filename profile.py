@@ -50,7 +50,7 @@ params = pc.bindParameters()
 exclusive=False
 #phost = "urn:publicid:IDN+cloudlab.umass.edu+node+" + params.nodeName
 node = request.XenVM('umass-vm',exclusive=False)
-node_vm.component_manager_id = "urn:publicid:IDN+cloudlab.umass.edu+authority+cm"
+node.component_manager_id = "urn:publicid:IDN+cloudlab.umass.edu+authority+cm"
 node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU22-64-STD"
 node.setFailureAction('nonfatal')
 node.Desire("FPGA-Build-Pool", 1.0)
