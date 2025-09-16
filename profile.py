@@ -54,7 +54,7 @@ params = pc.bindParameters()
 # Create a XenVM
 
 exclusive=False
-phost = f"urn:publicid:IDN+cloudlab.umass.edu+node+{nodeName}"
+phost = "urn:publicid:IDN+cloudlab.umass.edu+node+" + nodeName
 node = request.XenVM('umass-vm',phost,exclusive)
 
 node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU22-64-STD"
