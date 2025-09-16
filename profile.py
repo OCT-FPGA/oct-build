@@ -53,6 +53,7 @@ node = request.XenVM('umass-vm',phost,exclusive)
 
 node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU22-64-STD"
 node.setFailureAction('nonfatal')
+node.Desire("FPGA-Build-Pool", 1.0)
 
 # Request a specific number of VCPUs.
 node.cores = params.CPU
