@@ -15,12 +15,12 @@ import geni.rspec.emulab as emulab
 pc = portal.Context()
 request = pc.makeRequestRSpec()
 
-RAM = [16, 32, 64, 96]
-CPU = [2, 4, 8, 12]
+RAM = [16, 32, 64]
+CPU = [2, 4, 8]
 toolVersion = ['2023.1', '2023.2'] 
 nodeName= ['fpga-build1', 'fpga-build2', 'build']
 
-pc.defineParameter("RAM",  "RAM size (GB)",
+pc.defineParameter("RAM",  "RAM (GB)",
                    portal.ParameterType.INTEGER, RAM[0], RAM,
                    longDescription="RAM size")
 
