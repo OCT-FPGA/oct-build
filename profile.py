@@ -15,12 +15,12 @@ import geni.rspec.emulab as emulab
 pc = portal.Context()
 request = pc.makeRequestRSpec()
 
-RAM = [16, 32, 64]
-CPU = [2, 4, 8]
+RAM = [16, 32, 64, 96]
+CPU = [2, 4, 8, 12]
 toolVersion = ['2023.1', '2023.2'] 
 nodeName= ['fpga-build1', 'fpga-build2', 'build']
 
-pc.defineParameter("RAM",  "RAM (GB)",
+pc.defineParameter("RAM",  "RAM size (GB)",
                    portal.ParameterType.INTEGER, RAM[0], RAM,
                    longDescription="RAM size")
 
@@ -59,8 +59,7 @@ node.cores = params.CPU
 
 # Request a specific amount of memory (in MB).
 
-#node.ram = 1024 * params.RAM
-node.ram = 4096
+node.ram = 1024*params.RAM
 
 # Set Storage
 #node.disk = 100
@@ -69,5 +68,3 @@ node.addService(pg.Execute(shell="bash", command="sudo /local/repository/post-bo
 
 # Print the RSpec to the enclosing page.
 portal.context.printRequestRSpec()
-
-
