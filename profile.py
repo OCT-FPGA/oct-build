@@ -19,6 +19,7 @@ RAM = [16, 32, 64, 96]
 CPU = [2, 4, 8, 12]
 vitisVersion = [('2023.1')]
 xrtVersion = [('2023.1')] 
+nodeName= ['fpga-build1', 'fpga-build2', 'build']
 
 pc.defineParameter("RAM",  "RAM size (GB)",
                    portal.ParameterType.INTEGER, RAM[0], RAM,
@@ -38,6 +39,11 @@ pc.defineParameter("xrtVersion", "XRT Version",
                    xrtVersion[0], xrtVersion,
                    longDescription="Select the tool version.")   
 
+pc.defineParameter("nodeName", "Physical host",
+                   portal.ParameterType.STRING,
+                   nodeName[0], phost,
+                   longDescription="Select the physical host.")  
+
 pc.defineParameter("enableRemoteDesktop", "Remote Desktop Access",
                    portal.ParameterType.BOOLEAN, False,
                    advanced=False,
@@ -46,8 +52,9 @@ pc.defineParameter("enableRemoteDesktop", "Remote Desktop Access",
 params = pc.bindParameters() 
  
 # Create a XenVM
-phost='urn:publicid:IDN+cloudlab.umass.edu+node+fpga-build1'
+
 exclusive=False
+phost = f"urn:publicid:IDN+cloudlab.umass.edu+node+{nodeName}"
 node = request.XenVM('umass-vm',phost,exclusive)
 
 node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU22-64-STD"
