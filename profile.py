@@ -45,15 +45,14 @@ pc.defineParameter("enableRemoteDesktop", "Remote Desktop Access",
 params = pc.bindParameters() 
  
 # Create a XenVM
-node = request.XenVM("build-vm")
-# name = "node" + str(0)
-# node = request.RawPC(name)
-node.xen_ptype = "build"
-# node.hardware_type = "fpga-alveo"
-node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU20-64-STD"
-node.component_manager_id = "urn:publicid:IDN+cloudlab.umass.edu+authority+cm"
+phost='urn:publicid:IDN+cloudlab.umass.edu+node+fpga-build1'
+exclusive=False
+node_vm = request.XenVM('umass-vm',phost,exclusive)
 
-# node.exclusive = False
+#node.xen_ptype = "build"
+# node.hardware_type = "fpga-alveo"
+node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU22-64-STD"
+node.component_manager_id = "urn:publicid:IDN+cloudlab.umass.edu+authority+cm"
 
 # Request a specific number of VCPUs.
 node.cores = params.numCPU
