@@ -12,7 +12,7 @@ install_libs(){
 
 install_dev_platform(){
     echo "Install dev platform"
-    cp /proj/octfpga-PG0/tools/dev_platform/${XRTVERSION}/*.deb /tmp
+    cp /proj/octfpga-PG0/tools/dev_platform/${TOOLVERSION}/*.deb /tmp
     apt install /tmp/xilinx-u280*.deb
 }
 
