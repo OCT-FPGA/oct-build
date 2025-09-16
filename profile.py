@@ -56,7 +56,7 @@ node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU22-64-STD
 node.setFailureAction('nonfatal')
 
 # Request a specific number of VCPUs.
-#node.cores = params.numCPU
+node.cores = params.numCPU
 
 # Request a specific amount of memory (in MB).
 
