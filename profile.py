@@ -41,7 +41,7 @@ pc.defineParameter("xrtVersion", "XRT Version",
 
 pc.defineParameter("nodeName", "Physical host",
                    portal.ParameterType.STRING,
-                   nodeName[0], phost,
+                   nodeName[0], nodeName,
                    longDescription="Select the physical host.")  
 
 pc.defineParameter("enableRemoteDesktop", "Remote Desktop Access",
