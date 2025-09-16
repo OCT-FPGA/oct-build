@@ -15,17 +15,17 @@ import geni.rspec.emulab as emulab
 pc = portal.Context()
 request = pc.makeRequestRSpec()
 
-numRAM = [16, 32, 64, 96]
-numCPU = [2, 4, 8, 12]
+RAM = [16, 32, 64, 96]
+CPU = [2, 4, 8, 12]
 vitisVersion = [('2023.1')]
 xrtVersion = [('2023.1')] 
 
-pc.defineParameter("numRAM",  "RAM size (GB)",
-                   portal.ParameterType.INTEGER, numRAM[0], numRAM,
+pc.defineParameter("RAM",  "RAM size (GB)",
+                   portal.ParameterType.INTEGER, RAM[0], RAM,
                    longDescription="RAM size")
 
-pc.defineParameter("numCPU",  "No: of VCPUs",
-                   portal.ParameterType.INTEGER, numCPU[0], numCPU,
+pc.defineParameter("CPU",  "No: of VCPUs",
+                   portal.ParameterType.INTEGER, CPU[0], CPU,
                    longDescription="No: of VCPUs")
 
 pc.defineParameter("vitisVersion", "Vitis Version",
@@ -56,11 +56,11 @@ node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU22-64-STD
 node.setFailureAction('nonfatal')
 
 # Request a specific number of VCPUs.
-node.cores = params.numCPU
+node.cores = params.CPU
 
 # Request a specific amount of memory (in MB).
 
-#node.ram = 1024*params.numRAM
+node.ram = 1024*params.RAM
 
 # Set Storage
 #node.disk = 100
