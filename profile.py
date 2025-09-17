@@ -64,7 +64,18 @@ node.ram = 1024 * params.RAM
 #node.ram = 1024
 
 # Set Storage
-node.disk = 100
+# node.disk = 100
+
+iface = node.addInterface()
+fsnode = request.RemoteBlockstore("fsnode", "/mydata")
+fsnode.dataset = "urn:publicid:IDN+emulab.net:octfpga+ltdataset+Xilinx"
+# Now we add the link between the node and the special node
+fslink = request.Link("fslink")
+fslink.addInterface(iface)
+fslink.addInterface(fsnode.interface)
+# Special attributes for this link that we must use.
+fslink.best_effort = True
+fslink.vlan_tagging = True
 
 node.addService(pg.Execute(shell="bash", command="sudo /local/repository/post-boot.sh " + str(params.remoteDesktop) + " " + params.toolVersion + " >> /local/logs/output_log.txt"))  
 
