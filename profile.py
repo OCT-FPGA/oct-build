@@ -33,10 +33,10 @@ pc.defineParameter("toolVersion", "Tool Version",
                    toolVersion[0], toolVersion,
                    longDescription="Select the tool version.")   
 
-pc.defineParameter("nodeName", "Physical host",
-                   portal.ParameterType.STRING,
-                   nodeName[0], nodeName,
-                   longDescription="Select the physical host.")  
+#pc.defineParameter("nodeName", "Physical host",
+#                   portal.ParameterType.STRING,
+#                   nodeName[0], nodeName,
+#                   longDescription="Select the physical host.")  
 
 pc.defineParameter("enableRemoteDesktop", "Remote Desktop Access",
                    portal.ParameterType.BOOLEAN, False,
@@ -66,7 +66,7 @@ node.ram = 1024 * params.RAM
 # Set Storage
 #node.disk = 100
 
-node.addService(pg.Execute(shell="bash", command="sudo /local/repository/post-boot.sh " + str(params.enableRemoteDesktop) + " " + params.toolVersion + " >> /local/repository/output_log.txt"))  
+node.addService(pg.Execute(shell="bash", command="sudo /local/repository/post-boot.sh " + str(params.enableRemoteDesktop) + " " + params.toolVersion + " >> /local/logs/output_log.txt"))  
 
 # Print the RSpec to the enclosing page.
 portal.context.printRequestRSpec()
