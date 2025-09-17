@@ -38,7 +38,7 @@ pc.defineParameter("toolVersion", "Tool Version",
 #                   nodeName[0], nodeName,
 #                   longDescription="Select the physical host.")  
 
-pc.defineParameter("enableRemoteDesktop", "Remote Desktop Access",
+pc.defineParameter("remoteDesktop", "Remote Desktop Access",
                    portal.ParameterType.BOOLEAN, False,
                    advanced=False,
                    longDescription="Enable remote desktop access by installing GNOME desktop and VNC server.")
@@ -66,7 +66,7 @@ node.ram = 1024 * params.RAM
 # Set Storage
 #node.disk = 100
 
-node.addService(pg.Execute(shell="bash", command="sudo /local/repository/post-boot.sh " + str(params.enableRemoteDesktop) + " " + params.toolVersion + " >> /local/logs/output_log.txt"))  
+node.addService(pg.Execute(shell="bash", command="sudo /local/repository/post-boot.sh " + str(params.remoteDesktop) + " " + params.toolVersion + " >> /local/logs/output_log.txt"))  
 
 # Print the RSpec to the enclosing page.
 portal.context.printRequestRSpec()
