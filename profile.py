@@ -64,7 +64,7 @@ node.ram = 1024 * params.RAM
 #node.ram = 1024
 
 # Set Storage
-#node.disk = 100
+node.disk = 100
 
 node.addService(pg.Execute(shell="bash", command="sudo /local/repository/post-boot.sh " + str(params.remoteDesktop) + " " + params.toolVersion + " >> /local/logs/output_log.txt"))  
 
