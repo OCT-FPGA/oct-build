@@ -22,7 +22,7 @@ nodeName= ['fpga-build1', 'fpga-build2', 'build']
 
 pc.defineParameter("RAM",  "RAM (GB)",
                    portal.ParameterType.INTEGER, RAM[0], RAM,
-                   longDescription="RAM size")
+                   longDescription="RAM")
 
 pc.defineParameter("CPU",  "No: of VCPUs",
                    portal.ParameterType.INTEGER, CPU[0], CPU,
@@ -42,7 +42,6 @@ params = pc.bindParameters()
  
 # Create a XenVM
 
-exclusive=False
 #phost = "urn:publicid:IDN+cloudlab.umass.edu+node+" + params.nodeName
 node = request.XenVM('umass-vm',exclusive=False)
 node.component_manager_id = "urn:publicid:IDN+cloudlab.umass.edu+authority+cm"
