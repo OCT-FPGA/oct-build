@@ -5,14 +5,14 @@ install_libs(){
     #sudo apt install -y ocl-icd-devel
     apt update
     apt install -y opencl-headers
-    echo "Installing Vitis ${TOOLVERSION} libraries"
-    /proj/octfpga-PG0/tools/Xilinx/Vitis/${TOOLVERSION}/scripts/installLibs.sh
-    bash -c "echo 'source /proj/octfpga-PG0/tools/Xilinx/Vitis/${TOOLVERSION}/settings64.sh' >> /etc/profile"
+    echo "Installing Vitis $TOOLVERSION libraries"
+    $VITIS_BASE_PATH/$TOOLVERSION/scripts/installLibs.sh
+    bash -c "echo 'source $VITIS_BASE_PATH/$TOOLVERSION/settings64.sh' >> /etc/profile"
 }
 
 install_dev_platform(){
     echo "Install dev platform"
-    cp /proj/octfpga-PG0/tools/dev_platform/${TOOLVERSION}/*.deb /tmp
+    cp /proj/octfpga-PG0/tools/dev_platform/$TOOLVERSION/*.deb /tmp
     apt install /tmp/xilinx-u280*.deb
 }
 
@@ -98,7 +98,7 @@ install_libs() {
 XRT_BASE_PATH="/proj/octfpga-PG0/tools/deployment/xrt"
 SHELL_BASE_PATH="/proj/octfpga-PG0/tools/deployment/shell"
 XBFLASH_BASE_PATH="/proj/octfpga-PG0/tools/xbflash"
-VITIS_BASE_PATH="/proj/octfpga-PG0/tools/Xilinx/Vitis"
+VITIS_BASE_PATH="/share/Xilinx/Vitis"
 CONFIG_FPGA_PATH="/proj/octfpga-PG0/tools/post-boot/u280/ubuntu-$(lsb_release -rs)"
 
 OSVERSION=`grep '^ID=' /etc/os-release | awk -F= '{print $2}'`
