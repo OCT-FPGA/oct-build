@@ -34,7 +34,7 @@ pc.defineParameter("toolVersion", "Tool Version",
                    longDescription="Select the tool version.")    
 
 pc.defineParameter("remoteDesktop", "Remote Desktop Access",
-                   portal.ParameterType.BOOLEAN, False,
+                   portal.ParameterType.BOOLEAN, True,
                    advanced=False,
                    longDescription="Enable remote desktop access by installing GNOME desktop and VNC server.")
 
