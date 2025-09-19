@@ -1,4 +1,4 @@
-"""Use this profile to spin up a build machine in OCT.
+"""Use this profile to spin up a build machine in OCT."""
 
 import geni.portal as portal
 import geni.rspec.pg as pg
