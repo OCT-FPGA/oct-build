@@ -9,9 +9,8 @@ pc = portal.Context()
 request = pc.makeRequestRSpec()
 
 RAM = [16, 32, 64]
-CPU = [2, 4, 8, 12]
-toolVersion = ['2023.1', '2023.2'] 
-nodeName= ['fpga-build1', 'fpga-build2', 'build']
+CPU = [4, 8, 12]
+toolVersion = ['2023.2', '2023.1'] 
 
 pc.defineParameter("RAM",  "RAM (GB)",
                    portal.ParameterType.INTEGER, RAM[0], RAM,
@@ -35,7 +34,6 @@ params = pc.bindParameters()
  
 # Create a XenVM
 
-#phost = "urn:publicid:IDN+cloudlab.umass.edu+node+" + params.nodeName
 node = request.XenVM('fpga-tools',exclusive=False)
 node.component_manager_id = "urn:publicid:IDN+cloudlab.umass.edu+authority+cm"
 node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU22-64-STD"
