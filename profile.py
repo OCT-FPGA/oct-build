@@ -16,7 +16,7 @@ pc = portal.Context()
 request = pc.makeRequestRSpec()
 
 RAM = [16, 32, 64]
-CPU = [2, 4, 8, 12, 16, 32]
+CPU = [2, 4, 8, 12]
 toolVersion = ['2023.1', '2023.2'] 
 nodeName= ['fpga-build1', 'fpga-build2', 'build']
 
