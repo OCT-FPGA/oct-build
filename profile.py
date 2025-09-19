@@ -43,7 +43,7 @@ params = pc.bindParameters()
 # Create a XenVM
 
 #phost = "urn:publicid:IDN+cloudlab.umass.edu+node+" + params.nodeName
-node = request.XenVM('umass-vm',exclusive=False)
+node = request.XenVM('fpga-tools',exclusive=False)
 node.component_manager_id = "urn:publicid:IDN+cloudlab.umass.edu+authority+cm"
 node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU22-64-STD"
 node.setFailureAction('nonfatal')
