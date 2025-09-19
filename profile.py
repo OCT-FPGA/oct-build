@@ -1,4 +1,4 @@
-"""This profile is used to instantiate a build VM in OCT. DO NOT USE 
+"""This profile is used to instantiate a build machine in OCT. 
 
 Instructions:
 Wait for the profile instance to start, and then log in to the VM via the
