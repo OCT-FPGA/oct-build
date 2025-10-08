@@ -95,11 +95,10 @@ install_libs() {
     sudo $VITIS_BASE_PATH/$TOOLVERSION/scripts/installLibs.sh
 }
 
-XRT_BASE_PATH="/proj/octfpga-PG0/tools/deployment/xrt"
-SHELL_BASE_PATH="/proj/octfpga-PG0/tools/deployment/shell"
-XBFLASH_BASE_PATH="/proj/octfpga-PG0/tools/xbflash"
+XRT_BASE_PATH="/share/tools/u280/deployment/xrt"
+SHELL_BASE_PATH="/share/tools/u280/deployment/shell"
+XBFLASH_BASE_PATH="/share/tools/u280/xbflash"
 VITIS_BASE_PATH="/share/Xilinx/Vitis"
-CONFIG_FPGA_PATH="/proj/octfpga-PG0/tools/post-boot/u280/ubuntu-$(lsb_release -rs)"
 
 OSVERSION=`grep '^ID=' /etc/os-release | awk -F= '{print $2}'`
 OSVERSION=`echo $OSVERSION | tr -d '"'`
