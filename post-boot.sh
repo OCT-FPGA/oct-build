@@ -10,10 +10,21 @@ install_libs(){
     bash -c "echo 'source $VITIS_BASE_PATH/$TOOLVERSION/settings64.sh' >> /etc/profile"
 }
 
-install_dev_platform(){
-    echo "Install dev platform"
-    cp /share/tools/u280/dev_platform/$TOOLVERSION/*.deb /tmp
+install_u280_dev_platform(){
+    echo "Install u280 dev platform"
+    cp $U280_DEV_PLATFORM_PATH/$TOOLVERSION/*.deb /tmp
     apt install /tmp/xilinx-u280*.deb
+}
+
+install_vck5000_dev_platform(){
+    echo "Install vck5000 dev platform"
+    cp $VCK5000_DEV_PLATFORM_PATH/$TOOLVERSION/*.deb /tmp
+    apt install /tmp/xilinx-vck5000*.deb   
+}
+
+install_xrt_apu(){
+    echo "XRT APU install"
+    apt install /tmp/xrt-apu*.deb   
 }
 
 install_xrt() {
@@ -99,6 +110,7 @@ XRT_BASE_PATH="/share/tools/u280/deployment/xrt"
 SHELL_BASE_PATH="/share/tools/u280/deployment/shell"
 XBFLASH_BASE_PATH="/share/tools/u280/xbflash"
 VITIS_BASE_PATH="/share/Xilinx/Vitis"
+U280_DEV_PLATFORM_PATH="/share/tools/u280/dev_platform"
 
 OSVERSION=`grep '^ID=' /etc/os-release | awk -F= '{print $2}'`
 OSVERSION=`echo $OSVERSION | tr -d '"'`
@@ -150,7 +162,9 @@ else
     fi
 fi
 
-install_dev_platform
+install_u280_dev_platform
+install_vck5000_dev_platform
+install_xrt_apu
 
 if [ $REMOTEDESKTOP == "True" ] ; then
     echo "Installing remote desktop software"
