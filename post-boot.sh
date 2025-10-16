@@ -111,6 +111,7 @@ SHELL_BASE_PATH="/share/tools/u280/deployment/shell"
 XBFLASH_BASE_PATH="/share/tools/u280/xbflash"
 VITIS_BASE_PATH="/share/Xilinx/Vitis"
 U280_DEV_PLATFORM_PATH="/share/tools/u280/dev_platform"
+VCK5000_DEV_PLATFORM_PATH="/share/tools/vck5000/dev_platform"
 
 OSVERSION=`grep '^ID=' /etc/os-release | awk -F= '{print $2}'`
 OSVERSION=`echo $OSVERSION | tr -d '"'`
