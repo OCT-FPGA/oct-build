@@ -10,6 +10,10 @@ install_libs(){
     bash -c "echo 'source $VITIS_BASE_PATH/$TOOLVERSION/settings64.sh' >> /etc/profile"
 }
 
+setup_licenseserver(){
+    bash -c "echo '198.22.255.6 xilinxlm' >> /etc/hosts"
+}
+
 install_u280_dev_platform(){
     echo "Install u280 dev platform"
     cp $U280_DEV_PLATFORM_PATH/$TOOLVERSION/*.deb /tmp
@@ -148,6 +152,7 @@ else
 fi
 
 install_libs
+setup_licenseserver
 check_shellpkg
 if [ $? == 0 ]; then
     echo "Shell is already installed."
