@@ -47,7 +47,7 @@ params = pc.bindParameters()
  
 # Create a XenVM
 
-exclusive=True
+exclusive=False
 phost = "urn:publicid:IDN+cloudlab.umass.edu+node+" + params.nodeName
 node = request.XenVM('umass-vm',phost,exclusive)
 
