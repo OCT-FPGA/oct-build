@@ -62,7 +62,7 @@ params = pc.bindParameters()
 # Set up your physical nodes as usual.
 #
 pnode1 = request.RawPC('pnode1')
-pnode1.hardware_type = "build"
+pnode1.hardware_type = "build-flax0"
 
 #
 # Create the VMs, the first argument is which pnode to place the new VM on.
